@@ -17,7 +17,7 @@ warnings.filterwarnings('ignore')
 optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 # 2. INGEST DATA VIA NASA ASTROQUERY API
-print("📡 [1/6] Ingesting live records from NASA Archive...")
+print("[1/6] Ingesting live records from NASA Archive...")
 try:
     table = NasaExoplanetArchive.query_criteria(
         table="ps", 
@@ -145,7 +145,7 @@ test_probs = test_probs[:, 1] if test_probs.shape[1] == 2 else test_probs[:, 0]
 if len(np.unique(y_test)) >= 2:
     print(f"Operational Area Under ROC Curve (ROC-AUC): {roc_auc_score(y_test, test_probs):.4f}")
 
-print("\n" + "-"*50 + "\n 🪐 TOP 5 SCIENTIFIC ANOMALIES DETECTED\n" + "-"*50)
+print("\n" + "-"*50 + "\n TOP 5 SCIENTIFIC ANOMALIES DETECTED\n" + "-"*50)
 top_anomalies = df_engineered.sort_values(by='Anomaly_Score', ascending=False).head(5)
 for idx, row in top_anomalies.iterrows():
     print(f"» {row['pl_name']} ({row['hostname']}) | Anomaly Score: {row['Anomaly_Score']:.4f} | Habitability Index: {row['Habitability_Index']:.2%}")
